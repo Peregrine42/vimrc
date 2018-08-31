@@ -6,12 +6,10 @@ filetype off
 
 " === PLUGINS ===
 call plug#begin('~/.vim/plugged')
-
 Plug 'joshdick/onedark.vim'
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Raimondi/delimitMate'
 Plug 'wellle/targets.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-ruby/vim-ruby'
@@ -71,7 +69,8 @@ set noshiftround
 " Cursor motion
 set scrolloff=3
 set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
+set matchpairs=
+
 runtime! macros/matchit.vim
 
 " Move up/down editor lines
@@ -219,8 +218,12 @@ let g:startify_skiplist = [
       \ ]
 
 let g:startify_bookmarks = [
-      \ { 'v': '~/.vim/vimrc' },
+      \ { 'v': '~/.vim/.vimrc' },
       \ ]
 
 " Stop things splitting with Startify and replace it instead
 autocmd User Startified setlocal buftype=
+
+command W :w
+command WQ :wq
+command Wq :wq
