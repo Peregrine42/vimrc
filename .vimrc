@@ -25,8 +25,8 @@ Plug 'tpope/vim-endwise'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'gabesoft/vim-ags'
 
 call plug#end()
 
@@ -228,15 +228,4 @@ autocmd User Startified setlocal buftype=
 command W :w
 command WQ :wq
 command Wq :wq
-
-fun! SetupCommandAlias(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfun
-call SetupCommandAlias("Ag","Ags")
-
-let g:ags_agcontext = 0
-
-au BufRead,BufNewFile *.agsv            set filetype=agsv
-autocmd FileType agsv map <buffer> <CR> xu
+command Q :q
