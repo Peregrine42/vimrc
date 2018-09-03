@@ -27,6 +27,8 @@ Plug 'mhinz/vim-mix-format'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ajh17/VimCompletesMe'
+Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
 
@@ -161,6 +163,10 @@ let g:projectionist_heuristics ={
       \     "app/*.rb":       {"alternate": "spec/{}_spec.rb",         "type": "source"},
       \     "lib/*.rb":       {"alternate": "spec/{}_spec.rb",         "type": "source"},
       \     "spec/*_spec.rb": {"alternate": ["app/{}.rb","lib/{}.rb"], "type": "test"}
+      \  },
+      \  "src/test/java/*.java": {
+      \     "src/main/java/*.java":      {"alternate": "src/test/java/{}Test.java", "type": "source"},
+      \     "src/test/java/{}Test.java": {"alternate": "src/main/java/*.java", "type": "test"}
       \  }
       \}
 
@@ -229,3 +235,7 @@ command W :w
 command WQ :wq
 command Wq :wq
 command Q :q
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+let g:syntastic_java_checkers=['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
