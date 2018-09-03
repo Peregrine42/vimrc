@@ -26,6 +26,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'gabesoft/vim-ags'
 
 call plug#end()
 
@@ -218,7 +219,7 @@ let g:startify_skiplist = [
       \ ]
 
 let g:startify_bookmarks = [
-      \ { 'v': '~/.vim/.vimrc' },
+      \ { 'v': '~/.vimrc' },
       \ ]
 
 " Stop things splitting with Startify and replace it instead
@@ -227,3 +228,15 @@ autocmd User Startified setlocal buftype=
 command W :w
 command WQ :wq
 command Wq :wq
+
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("Ag","Ags")
+
+let g:ags_agcontext = 0
+
+au BufRead,BufNewFile *.agsv            set filetype=agsv
+autocmd FileType agsv map <buffer> <CR> xu
