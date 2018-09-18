@@ -27,11 +27,13 @@ Plug 'mhinz/vim-mix-format'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'ajh17/VimCompletesMe'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'gabesoft/vim-ags'
+Plug 'ajh17/VimCompletesMe'
 
 call plug#end()
 
+Plug 'gabesoft/vim-ags'
 " Turn on syntax highlighting
 syntax on
 
@@ -239,3 +241,7 @@ command Q :q
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 let g:syntastic_java_checkers=['javac']
 let g:syntastic_java_javac_config_file_enabled = 1
+
+let g:vcm_omni_pattern = "Tab"
+
+let g:ags_agcontext = 0
