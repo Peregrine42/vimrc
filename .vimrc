@@ -30,6 +30,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'gabesoft/vim-ags'
 Plug 'ajh17/VimCompletesMe'
+Plug 'zah/nim.vim'
+Plug 'alvan/vim-closetag'
 
 call plug#end()
 
@@ -77,10 +79,12 @@ set backspace=indent,eol,start
 set matchpairs=
 
 runtime! macros/matchit.vim
-
 " Move up/down editor lines
 nnoremap j gj
 nnoremap k gk
+
+inoremap `` <Esc>
+nnoremap `` <Esc>
 
 " Allow hidden buffers
 set hidden
