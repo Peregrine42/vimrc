@@ -3,6 +3,7 @@
 To install, you will need:
   - fd https://github.com/sharkdp/fd
   - Ag (The Silver Searcher) https://github.com/ggreer/the_silver_searcher
+  - Vim Plug https://github.com/junegunn/vim-plug
 
 # Install
 
