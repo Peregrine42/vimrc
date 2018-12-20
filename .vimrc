@@ -65,7 +65,6 @@ set encoding=utf-8
 
 " Whitespace
 set nowrap
-set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
