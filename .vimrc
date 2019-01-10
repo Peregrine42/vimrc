@@ -7,6 +7,7 @@ filetype off
 " === PLUGINS ===
 call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
@@ -32,6 +33,9 @@ Plug 'gabesoft/vim-ags'
 Plug 'ajh17/VimCompletesMe'
 Plug 'zah/nim.vim'
 Plug 'alvan/vim-closetag'
+Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-fugitive'
+Plug 'int3/vim-extradite'
 
 call plug#end()
 
@@ -248,3 +252,6 @@ let g:syntastic_java_javac_config_file_enabled = 1
 let g:vcm_omni_pattern = "Tab"
 
 let g:ags_agcontext = 0
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>e :SyntasticCheck<CR> :SyntasticToggleMode<CR>
