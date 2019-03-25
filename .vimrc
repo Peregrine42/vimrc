@@ -6,40 +6,19 @@ filetype off
 
 " === PLUGINS ===
 call plug#begin('~/.vim/plugged')
-Plug 'joshdick/onedark.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'wellle/targets.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-projectionist'
-Plug 'andyl/vim-projectionist-elixir'
-Plug 'scrooloose/nerdcommenter'
-Plug 'farmergreg/vim-lastplace'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'dbakker/vim-projectroot'
 Plug 'tpope/vim-endwise'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'gabesoft/vim-ags'
-Plug 'ajh17/VimCompletesMe'
-Plug 'zah/nim.vim'
 Plug 'alvan/vim-closetag'
-Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
-
+Plug 'nlknguyen/papercolor-theme'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
-Plug 'gabesoft/vim-ags'
 " Turn on syntax highlighting
 syntax on
 
@@ -122,21 +101,6 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " === here endeth basic config ===
 
-" 24-bit color!
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-colorscheme onedark
-
 let g:startify_custom_header =[]
 let g:startify_bookmarks =['~/.vimrc']
 
@@ -157,28 +121,14 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 map <Leader>. :BufExplorer<CR>
 map <Leader><Leader> :b#<CR>
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" Projectionist defaults
-let g:projectionist_heuristics ={
-      \  "spec/*.rb": {
-      \     "app/*.rb":       {"alternate": "spec/{}_spec.rb",         "type": "source"},
-      \     "lib/*.rb":       {"alternate": "spec/{}_spec.rb",         "type": "source"},
-      \     "spec/*_spec.rb": {"alternate": ["app/{}.rb","lib/{}.rb"], "type": "test"}
-      \  },
-      \  "src/test/java/*.java": {
-      \     "src/main/java/*.java":      {"alternate": "src/test/java/{}Test.java", "type": "source"},
-      \     "src/test/java/{}Test.java": {"alternate": "src/main/java/*.java", "type": "test"}
-      \  }
-      \}
-
 
 " ----------------------------------------------
 " Setup NERDCommenter
